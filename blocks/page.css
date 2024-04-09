@@ -1,0 +1,13 @@
+.page {
+  font-family: "Inter", Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.page__content {
+  max-width: 880px;
+  margin: auto;
+  padding: 0 19px;
+  display: flex;
+  flex-direction: column;
+}

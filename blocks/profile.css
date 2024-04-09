@@ -1,0 +1,117 @@
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.profile__info {
+  margin-left: 30px;
+  display: grid;
+  grid-template-areas:
+    "title button"
+    "subtitle subtitle";
+  grid-template-columns: minmax(auto, 373px) auto;
+  align-items: center;
+  padding: 0 10px 0 0;
+}
+
+.profile__name {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin: 0;
+  padding: 0;
+  grid-area: title;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.profile__edit-button {
+  background: transparent url(../images/edit-button.svg) center no-repeat;
+  height: 24px;
+  width: 24px;
+  grid-area: button;
+  margin-left: 18px;
+  border: 1px solid #ffffff;
+}
+
+.profile__edit-button:hover {
+  opacity: 50%;
+}
+
+.profile__subtitle {
+  margin: 7px 0 0;
+  padding: 0;
+  grid-area: subtitle;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.profile__add-image-button {
+  background: transparent url(../images/add-button.svg) center no-repeat;
+  width: 150px;
+  height: 50px;
+  margin-left: auto;
+  border: 1px solid #ffffff;
+}
+
+.profile__add-image-button:hover {
+  opacity: 50%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 765px) {
+  .profile__info {
+    grid-template-columns: minmax(auto, 200px) auto;
+  }
+  .profile__name {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .profile__subtitle {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .profile__add-image-button {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 618px) {
+  .profile {
+    width: 282px;
+    flex-direction: column;
+    margin: auto;
+    padding: 42px 0 36px;
+  }
+
+  .profile__info {
+    justify-items: center;
+    margin-left: 0;
+  }
+
+  .profile__name {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .profile__edit-button {
+    margin: 0 15px 0 0;
+  }
+
+  .profile__subtitle {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .profile__add-image-button {
+    margin: 36px auto 0;
+    width: 100%;
+  }
+}
