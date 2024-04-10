@@ -1,2 +1,9 @@
-.cards {
+.cards__list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px 17px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }

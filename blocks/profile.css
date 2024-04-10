@@ -5,14 +5,14 @@
 }
 
 .profile__info {
-  margin-left: 30px;
+  /* margin-left: 30px; */
   display: grid;
   grid-template-areas:
     "title button"
     "subtitle subtitle";
   grid-template-columns: minmax(auto, 373px) auto;
   align-items: center;
-  padding: 0 10px 0 0;
+  padding: 0 10px 0 30px;
 }
 
 .profile__name {
@@ -91,6 +91,10 @@
     padding: 42px 0 36px;
   }
 
+  .profile__image {
+    margin: 0 0 30px 0;
+  }
+
   .profile__info {
     justify-items: center;
     margin-left: 0;
@@ -102,15 +106,18 @@
   }
 
   .profile__edit-button {
-    margin: 0 15px 0 0;
+    background-size: 7.5px;
+    margin: 0 0 0 10px;
   }
 
   .profile__subtitle {
+    margin: 14px 0 0;
     font-size: 14px;
     line-height: 17px;
   }
 
   .profile__add-image-button {
+    background-size: 16px;
     margin: 36px auto 0;
     width: 100%;
   }
