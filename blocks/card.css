@@ -4,13 +4,13 @@
   padding: 0;
   border-radius: 10px;
   overflow: hidden;
-  object-fit: contain;
-  object-position: center;
 }
 
 .card__image {
   height: 282px;
   width: 282px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .card__info {

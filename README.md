@@ -1,6 +1,10 @@
 # Project 3: Around The U.S.
 
-Dzari.github.io/se_project_aroundtheus
+- https://dzari.github.io/se_project_aroundtheus/
+
+### Video explanation of the project
+
+- https://youtu.be/MfHUwaiNfxA
 
 ### Overview
 
