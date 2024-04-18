@@ -7,7 +7,7 @@
   z-index: 999;
   padding: 0 19px 0;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
+  display: none;
 }
 
 .modal_opened {
@@ -67,6 +67,10 @@
 
 .modal__form-input::placeholder {
   color: #000;
+}
+
+.modal__form-input:focus::placeholder {
+  color: transparent;
 }
 
 .modal__button {
