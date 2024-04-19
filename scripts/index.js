@@ -34,10 +34,8 @@ const cardsList = document.querySelector(".cards__list");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector(".modal");
 const modalCloseButton = document.querySelector(".modal__close");
-const editProfileName = document.querySelector(".modal__form-input--name");
-const editProfileSubtitle = document.querySelector(
-  ".modal__form-input--subtitle"
-);
+const editProfileName = document.querySelector("#profile-form-name");
+const editProfileSubtitle = document.querySelector("#profile-form-subtitle");
 const profileName = document.querySelector(".profile__name");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const profileEditForm = document.querySelector(".modal__form");
