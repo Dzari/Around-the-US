@@ -1,4 +1,4 @@
-let initialCards = [
+const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -29,16 +29,16 @@ let initialCards = [
 //ELEMENTS
 
 const cardTemplate =
-  document.querySelector(".card__template").content.firstElementChild;
-const cardsList = document.querySelector(".cards__list");
-const profileEditButton = document.querySelector(".profile__edit-button");
-const profileEditModal = document.querySelector(".modal");
-const modalCloseButton = document.querySelector(".modal__close");
-const editProfileName = document.querySelector("#profile-form-name");
-const editProfileSubtitle = document.querySelector("#profile-form-subtitle");
-const profileName = document.querySelector(".profile__name");
-const profileSubtitle = document.querySelector(".profile__subtitle");
-const profileEditForm = document.querySelector(".modal__form");
+  document.querySelector("#card-template").content.firstElementChild;
+const cardsList = document.querySelector("#cards-list");
+const profileEditButton = document.querySelector("#profile-edit-button");
+const profileEditModal = document.querySelector("#edit-profile-modal");
+const modalCloseButton = document.querySelector("#modal-close");
+const editProfileName = document.querySelector("#edit-profile-name");
+const editProfileSubtitle = document.querySelector("#edit-profile-subtitle");
+const profileName = document.querySelector("#profile-name");
+const profileSubtitle = document.querySelector("#profile-subtitle");
+const profileEditForm = document.querySelector("#edit-profile-form");
 
 //FUNCTIONS
 

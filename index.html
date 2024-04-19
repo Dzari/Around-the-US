@@ -27,46 +27,55 @@
             alt="Profile Image"
           />
           <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
-            <button class="profile__edit-button" type="button"></button>
-            <p class="profile__subtitle">Explorer</p>
+            <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
+            <button
+              class="profile__edit-button"
+              id="profile-edit-button"
+              type="button"
+            ></button>
+            <p class="profile__subtitle" id="profile-subtitle">Explorer</p>
           </div>
           <button class="profile__add-image-button" type="button"></button>
         </section>
         <section class="cards">
-          <ul class="cards__list"></ul>
+          <ul class="cards__list" id="cards-list"></ul>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2022 Around The U.S.</p>
       </footer>
     </div>
-    <div class="modal">
+    <div class="modal" id="edit-profile-modal">
       <div class="modal__container">
         <button class="modal__close"></button>
         <p class="modal__heading">Edit profile</p>
-        <form class="modal__form">
+        <form class="modal__form" id="edit-profile-form">
           <input
             type="text"
             name="title"
             placeholder="name"
             class="modal__form-input"
-            id="profile-form-name"
+            id="edit-profile-name"
           />
           <input
             type="text"
             name="description"
             placeholder="subtitle"
             class="modal__form-input"
-            id="profile-form-subtitle"
+            id="edit-profile-subtitle"
           />
-          <button type="submit" name="modal__button" class="modal__button">
+          <button
+            type="submit"
+            name="modal__button"
+            id="modal-close"
+            class="modal__button"
+          >
             Save
           </button>
         </form>
       </div>
     </div>
-    <template class="card__template">
+    <template class="card-template" id="card-template">
       <li class="card">
         <img class="card__image" src="" alt="" />
         <div class="card__info">
