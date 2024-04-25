@@ -1,9 +1,20 @@
 .card {
+  position: relative;
   background-color: white;
   margin: 0;
   padding: 0;
   border-radius: 10px;
   overflow: hidden;
+}
+
+.card__trash {
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  border: none;
 }
 
 .card__image {
@@ -39,6 +50,10 @@
   width: 21px;
   height: 18px;
   transition: opacity 0.25s, cursor 0.25s;
+}
+
+.card__like_liked {
+  background-image: url(../images/card-liked.svg);
 }
 
 .card__like:hover {

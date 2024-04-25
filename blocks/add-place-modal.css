@@ -1,4 +1,4 @@
-.modal {
+.add-place-modal {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -7,14 +7,13 @@
   z-index: 999;
   padding: 0 19px 0;
   background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-}
-
-.modal_opened {
   display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.5s linear;
 }
 
-.modal__close {
+.add-place-modal__close {
   border: none;
   background-color: transparent;
   position: absolute;
@@ -28,7 +27,7 @@
   background-size: contain;
 }
 
-.modal__container {
+.add-place-modal__container {
   position: relative;
   padding: 36px;
   border-radius: 10px;
@@ -40,7 +39,7 @@
   box-sizing: border-box;
 }
 
-.modal__heading {
+.add-place-modal__heading {
   margin: 0 0 47px 0;
   width: 330px;
   font-weight: 900;
@@ -48,13 +47,13 @@
   line-height: 30px;
 }
 
-.modal__form {
+.add-place-modal__form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.modal__form-input {
+.add-place-modal__form-input {
   padding: 0;
   margin: 0;
   border: none;
@@ -65,15 +64,15 @@
   margin-bottom: 30px;
 }
 
-.modal__form-input::placeholder {
-  color: #000;
+.add-place-modal__form-input::placeholder {
+  color: #c4c4c4;
 }
 
-.modal__form-input:focus::placeholder {
+.add-place-modal__form-input:focus::placeholder {
   color: transparent;
 }
 
-.modal__button {
+.add-place-create__button {
   padding: 0;
   margin: 0;
   border: none;
@@ -86,35 +85,40 @@
   height: 50px;
   margin-top: 18px;
   width: 358px;
+  border-radius: 2px;
+}
+
+.add-place-create__button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 618px) {
-  .modal__close {
+  .add-place-modal__close {
     bottom: calc(100% + 14px);
     right: 0;
     width: 26px;
     height: 26px;
   }
 
-  .modal__container {
+  .add-place-modal__container {
     padding: 25px 22px;
     width: 282px;
     height: 322px;
   }
 
-  .modal__heading {
+  .add-place-modal__heading {
     margin-bottom: 75px;
     max-width: 238px;
     font-size: 18px;
     line-height: 22px;
   }
 
-  .modal__form {
+  .add-place-modal__form {
     size: 14px;
     line-height: 17px;
   }
 
-  .modal__button {
+  .add-place-create__button {
     width: 100%;
     height: 46px;
   }

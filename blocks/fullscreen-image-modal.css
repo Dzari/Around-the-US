@@ -1,0 +1,65 @@
+.fullscreen-image-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 0 19px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.5s linear;
+}
+
+.modal_is-opened {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+
+.fullscreen-image-modal__container {
+  position: relative;
+  margin: auto;
+  max-width: 816px;
+  max-height: 540px;
+}
+
+.fullscreen-image-modal__image {
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.fullscreen-image-modal__title {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: calc(10 + 100%);
+  right: calc(10 + 100%);
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+}
+
+.fullscreen-image-modal__close-button {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-image: url("../images/Close-Icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+@media screen and (max-width: 618px) {
+  .fullscreen-image-modal__close-button {
+    bottom: calc(100% + 14px);
+    right: 0;
+    width: 26px;
+    height: 26px;
+  }
+}
