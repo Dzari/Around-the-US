@@ -50,7 +50,7 @@ const addPlaceLink = document.querySelector("#add-place-image-link");
 //FUNCTIONS
 
 function getCardElement(data) {
-  let cardElement = cardTemplate.cloneNode(true);
+  const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector("#card-like");
@@ -60,9 +60,6 @@ function getCardElement(data) {
   const fullscreenTitle = cardElement.querySelector("#fullscreen-title");
   const fullscreenImage = cardElement.querySelector("#fullscreen-image");
   const fullscreenCloseButton = cardElement.querySelector("#fullscreen-close");
-
-  console.log(cardTitle);
-  console.log(fullscreenTitle);
 
   fullscreenTitle.textContent = data.name;
   fullscreenImage.src = data.link;
@@ -76,7 +73,8 @@ function getCardElement(data) {
   });
 
   deletebutton.addEventListener("click", () => {
-    cardElement.remove();
+    const deleteCard = deletebutton.closest(".card");
+    deleteCard.remove();
   });
 
   picture.addEventListener("click", () => {
