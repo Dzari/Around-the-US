@@ -30,14 +30,14 @@
             <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
             <button
               class="profile__edit-button"
-              id="profile-edit-button"
+              id="modal-open-button"
               type="button"
             ></button>
             <p class="profile__subtitle" id="profile-subtitle">Explorer</p>
           </div>
           <button
             class="profile__add-image-button"
-            id="add-image-button"
+            id="modal-open-button"
             type="button"
           ></button>
         </section>
@@ -49,98 +49,95 @@
         <p class="footer__copyright">© 2022 Around The U.S.</p>
       </footer>
     </div>
-    <div class="edit-profile-modal" id="edit-profile-modal">
-      <div class="edit-profile-modal__container">
+    <div class="modal" id="edit-profile-modal">
+      <div class="modal__container">
         <button
-          class="edit-profile-modal__close"
-          id="edit-profile-modal-close"
+          class="modal__close-button"
+          id="modal-close-button"
         ></button>
-        <p class="edit-profile-modal__heading">Edit profile</p>
-        <form class="edit-profile-modal__form" id="edit-profile-form">
+        <p class="modal__heading">Edit profile</p>
+        <form class="modal__form" id="edit-profile-form">
           <input
             type="text"
             name="title"
             placeholder="name"
-            class="edit-profile-modal__form-input"
+            class="modal__form-input"
             id="edit-profile-name"
           />
           <input
             type="text"
             name="description"
             placeholder="subtitle"
-            class="edit-profile-modal__form-input"
+            class="modal__form-input"
             id="edit-profile-subtitle"
           />
           <button
             type="submit"
-            name="edit-profile-modal__button"
+            class="modal__submit-button"
             id="edit-profile-modal-close"
-            class="edit-profile-modal__button"
           >
             Save
           </button>
         </form>
       </div>
     </div>
-    <div class="add-place-modal" id="add-place-modal">
-      <div class="add-place-modal__container">
+    <div class="modal" id="add-place-modal">
+      <div class="modal__container">
         <button
-          class="add-place-modal__close"
-          id="add-place-modal-close"
+          class="modal__close-button"
+          id="modal-close-button"
         ></button>
-        <p class="add-place-modal__heading">New place</p>
-        <form class="add-place-modal__form" id="add-place-form">
+        <p class="modal__heading">New place</p>
+        <form class="modal__form" id="add-place-form">
           <input
             type="text"
             name="title"
             placeholder="Title"
-            class="add-place-modal__form-input"
+            class="modal__form-input"
             id="add-place-title"
           />
           <input
             type="text"
             name="description"
             placeholder="Image link"
-            class="add-place-modal__form-input"
+            class="modal__form-input"
             id="add-place-image-link"
           />
           <button
             type="submit"
-            name="add-place-create__button"
+            class="modal__submit-button"
             id="add-place-create-button"
-            class="add-place-create__button"
           >
             Create
           </button>
         </form>
       </div>
     </div>
-
+    <div class="modal" id="modal">
+      <div class="modal__image-container">
+        <button
+          class="modal__close-button"
+          id="modal-close-button"
+          type="button"
+        ></button>
+        <img
+          class="modal__image"
+          id="fullscreen-image"
+          src=""
+          alt=""
+        />
+        <h3 class="modal__title" id="fullscreen-title"></h3>
+      </div>
+    </div>
     <template class="card-template" id="card-template">
       <li class="card">
         <button class="card__trash" id="card-delete" type="button"></button>
-        <img class="card__image" id="card-image" src="" alt="" />
+        <img class="card__image" id="modal-open-button" src="" alt="" />
         <div class="card__info">
           <h2 class="card__title"></h2>
           <button class="card__like" id="card-like" type="button"></button>
         </div>
       </li>
-      <div class="fullscreen-image-modal" id="fullscreen-image-modal">
-        <div class="fullscreen-image-modal__container">
-          <button
-            class="fullscreen-image-modal__close-button"
-            id="fullscreen-close"
-            type="button"
-          ></button>
-          <img
-            class="fullscreen-image-modal__image"
-            id="fullscreen-image"
-            src=""
-            alt=""
-          />
-          <h3 class="fullscreen-image-modal__title" id="fullscreen-title"></h3>
-        </div>
-      </div>
     </template>
     <script src="./scripts/index.js"></script>
   </body>
