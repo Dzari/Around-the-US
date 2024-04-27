@@ -30,14 +30,14 @@
             <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
             <button
               class="profile__edit-button"
-              id="modal-open-button"
+              id="edit-profile-modal-open-button"
               type="button"
             ></button>
             <p class="profile__subtitle" id="profile-subtitle">Explorer</p>
           </div>
           <button
             class="profile__add-image-button"
-            id="modal-open-button"
+            id="add-card-modal-open-button"
             type="button"
           ></button>
         </section>
@@ -56,64 +56,64 @@
           id="modal-close-button"
         ></button>
         <p class="modal__heading">Edit profile</p>
-        <form class="modal__form" id="edit-profile-form">
+        <form class="modal__form" id="edit-profile-modal-form">
           <input
             type="text"
             name="title"
             placeholder="name"
             class="modal__form-input"
-            id="edit-profile-name"
+            id="edit-profile-name-placeholder"
           />
           <input
             type="text"
             name="description"
             placeholder="subtitle"
             class="modal__form-input"
-            id="edit-profile-subtitle"
+            id="edit-profile-subtitle-placeholder"
           />
           <button
             type="submit"
             class="modal__submit-button"
-            id="edit-profile-modal-close"
+            id="edit-profile-modal-submit-button"
           >
             Save
           </button>
         </form>
       </div>
     </div>
-    <div class="modal" id="add-place-modal">
+    <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button
           class="modal__close-button"
           id="modal-close-button"
         ></button>
         <p class="modal__heading">New place</p>
-        <form class="modal__form" id="add-place-form">
+        <form class="modal__form" id="add-card-modal-form">
           <input
             type="text"
             name="title"
             placeholder="Title"
             class="modal__form-input"
-            id="add-place-title"
+            id="add-card-title"
           />
           <input
             type="text"
             name="description"
             placeholder="Image link"
             class="modal__form-input"
-            id="add-place-image-link"
+            id="add-card-image-link"
           />
           <button
             type="submit"
             class="modal__submit-button"
-            id="add-place-create-button"
+            id="add-card-modal-submit-button"
           >
             Create
           </button>
         </form>
       </div>
     </div>
-    <div class="modal" id="modal">
+    <div class="modal" id="max-image-modal">
       <div class="modal__image-container">
         <button
           class="modal__close-button"
@@ -122,17 +122,17 @@
         ></button>
         <img
           class="modal__image"
-          id="fullscreen-image"
+          id="max-image"
           src=""
           alt=""
         />
-        <h3 class="modal__title" id="fullscreen-title"></h3>
+        <h3 class="modal__title" id="max-image-title"></h3>
       </div>
     </div>
     <template class="card-template" id="card-template">
       <li class="card">
         <button class="card__trash" id="card-delete" type="button"></button>
-        <img class="card__image" id="modal-open-button" src="" alt="" />
+        <img class="card__image" id="max-image-modal-open-button" src="" alt="" />
         <div class="card__info">
           <h2 class="card__title"></h2>
           <button class="card__like" id="card-like" type="button"></button>
