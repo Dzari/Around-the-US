@@ -164,6 +164,7 @@ function handleAddCardSubmit(e) {
   cardsList.prepend(cardElement);
 
   closeModal(addCardModal);
+  e.target.reset();
 }
 
 //***************************************************************************************************************************//
@@ -178,7 +179,6 @@ editProfileMOB.addEventListener("click", () => {
 });
 
 addCardMOB.addEventListener("click", () => {
-  e.target.reset();
   openModal(addCardModal);
 });
 
