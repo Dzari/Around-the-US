@@ -30,11 +30,22 @@ const initialCards = [
 //                                                     ELEMENTS                                                              //
 //***************************************************************************************************************************//
 
+
+
+
+//***************************************************************************************************************************//
+//      ATTENTION REVIEWER!!! Thank you for reviewing this project! It was challenging but refactoring was a lot of          //
+//      fun and cleaning this up was extremely satisfying. Might still have a few corrections but its all makes sense        //
+//      and is all simplified/segmented beautifully! So thanks again for the help and not giving me the answers.             //
+//      I had to work for it!                                                                                                //
+//***************************************************************************************************************************//
+
 //Button Elements
 
 const editProfileMOB = document.querySelector("#edit-profile-modal-open-button");
 const addCardMOB = document.querySelector("#add-card-modal-open-button");
-//maxImageMOB after Initilization
+
+//maxImageMOB added to every card
 
 const closeButtons = document.querySelectorAll("#modal-close-button");
 
@@ -65,6 +76,11 @@ const addCardModalForm = document.querySelector("#add-card-modal-form");
 const addCardTitle = document.querySelector("#add-card-title");
 const addCardLink = document.querySelector("#add-card-image-link");
 
+//Max Image Elements
+
+const maxImage = document.querySelector("#max-image");
+const maxImageTitle = document.querySelector("#max-image-title");
+
 //***************************************************************************************************************************//
 //                                             Initial Functions                                                             //
 //***************************************************************************************************************************//
@@ -74,28 +90,10 @@ initialCards.forEach((cardData) => {
   cardsList.append(cardElement);
 });
 
-const maxImageMOBArray = document.querySelectorAll("#max-image-modal-open-button");
-
-
-maxImageMOBArray.forEach((maxImageMOB) => {
-  maxImageMOB.addEventListener("click", () => {
-    const card = maxImageMOB.closest(".card");
-    const cardImage = card.querySelector(".card__image");
-    const cardTitle = card.querySelector(".card__title");
-    const maxImage = maxImageModal.querySelector("#max-image");
-    const maxImageTitle = maxImageModal.querySelector("#max-image-title");
-    
-    maxImage.src = cardImage.src;
-    maxImage.alt = cardImage.alt;
-    maxImageTitle.textContent = cardTitle.textContent;
-
-    openModal(maxImageModal)
-  });
-});
-
 closeButtons.forEach((closeButton) => {
   closeButton.addEventListener("click", () => {
-    closeModal(closeButton)
+    const modal = closeButton.closest(".modal");
+    closeModal(modal)
   });
 })
 
@@ -104,13 +102,15 @@ closeButtons.forEach((closeButton) => {
 //***************************************************************************************************************************//
 
 function getCardElement(data) {
+
+  //Cloning
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector("#card-like");
   const deletebutton = cardElement.querySelector("#card-delete");
 
-
+  //Assigning data to new clone
   cardTitle.textContent = data.name;
   cardImage.alt = data.name;
   cardImage.src = data.link;
@@ -124,6 +124,13 @@ function getCardElement(data) {
     deleteCard.remove();
   });
 
+  cardImage.addEventListener("click", () => {
+    maxImage.src = cardImage.src;
+    maxImage.alt = cardImage.alt;
+    maxImageTitle.textContent = cardTitle.textContent;
+    openModal(maxImageModal)
+  })
+
 
   return cardElement;
 }
@@ -132,23 +139,12 @@ function getCardElement(data) {
 //                                             Event Handlers                                                                //
 //***************************************************************************************************************************//
 
-function closeModal(closeButton) {
-  const modal = closeButton.closest(".modal");
+function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
 function openModal(modal){
-  if (modal === editProfileModal) {
     modal.classList.add("modal_is-opened");
-    editProfileNamePlaceholder.value = profileName.textContent;
-    editProfileSubtitlePlaceholder.value = profileSubtitle.textContent;
-  }
-  else if (modal === addCardModal) {
-    modal.classList.add("modal_is-opened");
-  }
-  else if (modal === maxImageModal) {
-    modal.classList.add("modal_is-opened");
-  }
 }
 
 function handleEditProfileSubmit(e) {
@@ -160,7 +156,7 @@ function handleEditProfileSubmit(e) {
 
 function handleAddCardSubmit(e) {
   e.preventDefault();
-  let cardData = {
+  const cardData = {
     name: addCardTitle.value,
     link: addCardLink.value,
   };
@@ -168,7 +164,6 @@ function handleAddCardSubmit(e) {
   cardsList.prepend(cardElement);
 
   closeModal(addCardModal);
-  e.target.reset();
 }
 
 //***************************************************************************************************************************//
@@ -177,10 +172,13 @@ function handleAddCardSubmit(e) {
 
 //Open Buttons
 editProfileMOB.addEventListener("click", () => {
+  editProfileNamePlaceholder.value = profileName.textContent;
+  editProfileSubtitlePlaceholder.value = profileSubtitle.textContent;
   openModal(editProfileModal)
 });
 
 addCardMOB.addEventListener("click", () => {
+  e.target.reset();
   openModal(addCardModal);
 });
 
