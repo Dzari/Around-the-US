@@ -30,9 +30,6 @@ const initialCards = [
 //                                                     ELEMENTS                                                              //
 //***************************************************************************************************************************//
 
-
-
-
 //***************************************************************************************************************************//
 //      ATTENTION REVIEWER!!! Thank you for reviewing this project! It was challenging but refactoring was a lot of          //
 //      fun and cleaning this up was extremely satisfying. Might still have a few corrections but its all makes sense        //
@@ -42,15 +39,21 @@ const initialCards = [
 
 //Button Elements
 
-const editProfileMOB = document.querySelector("#edit-profile-modal-open-button");
+const editProfileMOB = document.querySelector(
+  "#edit-profile-modal-open-button"
+);
 const addCardMOB = document.querySelector("#add-card-modal-open-button");
 
 //maxImageMOB added to every card
 
 const closeButtons = document.querySelectorAll("#modal-close-button");
 
-const editProfileSubmitButton = document.querySelector("#edit-profile-modal-submit-button");
-const addCardSubmitButton = document.querySelector("#add-card-modal-submit-button");
+const editProfileSubmitButton = document.querySelector(
+  "#edit-profile-modal-submit-button"
+);
+const addCardSubmitButton = document.querySelector(
+  "#add-card-modal-submit-button"
+);
 
 //Modal Elements
 
@@ -66,8 +69,12 @@ const cardsList = document.querySelector("#cards-list");
 
 const profileName = document.querySelector("#profile-name");
 const profileSubtitle = document.querySelector("#profile-subtitle");
-const editProfileNamePlaceholder = document.querySelector("#edit-profile-name-placeholder");
-const editProfileSubtitlePlaceholder = document.querySelector("#edit-profile-subtitle-placeholder");
+const editProfileNamePlaceholder = document.querySelector(
+  "#edit-profile-name-placeholder"
+);
+const editProfileSubtitlePlaceholder = document.querySelector(
+  "#edit-profile-subtitle-placeholder"
+);
 const editProfileModalForm = document.querySelector("#edit-profile-modal-form");
 
 //Add Card Elements
@@ -93,16 +100,15 @@ initialCards.forEach((cardData) => {
 closeButtons.forEach((closeButton) => {
   closeButton.addEventListener("click", () => {
     const modal = closeButton.closest(".modal");
-    closeModal(modal)
+    closeModal(modal);
   });
-})
+});
 
 //***************************************************************************************************************************//
 //                                                 Functions                                                                 //
 //***************************************************************************************************************************//
 
 function getCardElement(data) {
-
   //Cloning
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
@@ -128,9 +134,8 @@ function getCardElement(data) {
     maxImage.src = cardImage.src;
     maxImage.alt = cardImage.alt;
     maxImageTitle.textContent = cardTitle.textContent;
-    openModal(maxImageModal)
-  })
-
+    openModal(maxImageModal);
+  });
 
   return cardElement;
 }
@@ -143,8 +148,8 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
-function openModal(modal){
-    modal.classList.add("modal_is-opened");
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
 }
 
 function handleEditProfileSubmit(e) {
@@ -175,7 +180,7 @@ function handleAddCardSubmit(e) {
 editProfileMOB.addEventListener("click", () => {
   editProfileNamePlaceholder.value = profileName.textContent;
   editProfileSubtitlePlaceholder.value = profileSubtitle.textContent;
-  openModal(editProfileModal)
+  openModal(editProfileModal);
 });
 
 addCardMOB.addEventListener("click", () => {
