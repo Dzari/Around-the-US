@@ -30,13 +30,6 @@ const initialCards = [
 //                                                     ELEMENTS                                                              //
 //***************************************************************************************************************************//
 
-//***************************************************************************************************************************//
-//      ATTENTION REVIEWER!!! Thank you for reviewing this project! It was challenging but refactoring was a lot of          //
-//      fun and cleaning this up was extremely satisfying. Might still have a few corrections but its all makes sense        //
-//      and is all simplified/segmented beautifully! So thanks again for the help and not giving me the answers.             //
-//      I had to work for it!                                                                                                //
-//***************************************************************************************************************************//
-
 //Button Elements
 
 const editProfileMOB = document.querySelector(
@@ -44,9 +37,9 @@ const editProfileMOB = document.querySelector(
 );
 const addCardMOB = document.querySelector("#add-card-modal-open-button");
 
-//maxImageMOB added to every card
+const modalCloseButtons = document.querySelectorAll(".modal__close-button");
 
-const closeButtons = document.querySelectorAll("#modal-close-button");
+//maxImageMOB added to every card
 
 const editProfileSubmitButton = document.querySelector(
   "#edit-profile-modal-submit-button"
@@ -57,6 +50,7 @@ const addCardSubmitButton = document.querySelector(
 
 //Modal Elements
 
+const modals = Array.from(document.querySelectorAll(".modal"));
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const addCardModal = document.querySelector("#add-card-modal");
 const maxImageModal = document.querySelector("#max-image-modal");
@@ -94,14 +88,8 @@ const maxImageTitle = document.querySelector("#max-image-title");
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
-  cardsList.append(cardElement);
-});
 
-closeButtons.forEach((closeButton) => {
-  closeButton.addEventListener("click", () => {
-    const modal = closeButton.closest(".modal");
-    closeModal(modal);
-  });
+  cardsList.append(cardElement);
 });
 
 //***************************************************************************************************************************//
@@ -140,16 +128,26 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function escapetoClose(evt) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_is-opened");
+    closeModal(openModal);
+  }
+}
+
 //***************************************************************************************************************************//
 //                                             Event Handlers                                                                //
 //***************************************************************************************************************************//
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", escapetoClose);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+
+  document.addEventListener("keydown", escapetoClose);
 }
 
 function handleEditProfileSubmit(e) {
@@ -192,4 +190,20 @@ addCardMOB.addEventListener("click", () => {
 editProfileModalForm.addEventListener("submit", handleEditProfileSubmit);
 addCardModalForm.addEventListener("submit", handleAddCardSubmit);
 
-//Close Button listeners created after Initilization and creation of Cards
+//Close Button
+
+modalCloseButtons.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    closeModal(evt.target.closest(".modal"));
+  });
+});
+
+//Modal Click to close listeners
+
+modals.forEach((modal) => {
+  modal.addEventListener("click", (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closeModal(modal);
+    }
+  });
+});
