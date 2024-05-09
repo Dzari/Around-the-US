@@ -27,8 +27,7 @@ export default class FormValidator {
   }
 
   enableValidation() {
-    const { inputSelector } = this._config;
-    const { submitButtonSelector } = this._config;
+    const { inputSelector, submitButtonSelector } = this._config;
     this._inputList = [...this._form.querySelectorAll(inputSelector)];
     this._buttonElement = this._form.querySelector(submitButtonSelector);
     this.toggleButtonState();

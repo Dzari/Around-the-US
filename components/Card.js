@@ -6,7 +6,7 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._cardImage.addEventListener("click", () => {
+    this.cardImage.addEventListener("click", () => {
       this._handleImageClick(this);
     });
 
@@ -24,17 +24,17 @@ export default class Card {
     });
   }
 
-  getCardElement(data) {
+  getCardElement() {
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.cloneNode(true);
-    this._cardImage = this._cardElement.querySelector(".card__image");
+    this.cardImage = this._cardElement.querySelector(".card__image");
     const cardTitle = this._cardElement.querySelector(".card__title");
 
     //Assigning data to new clone
-    cardTitle.textContent = data.name;
-    this._cardImage.alt = data.name;
-    this._cardImage.src = data.link;
+    cardTitle.textContent = this._data.name;
+    this.cardImage.alt = this._data.name;
+    this.cardImage.src = this._data.link;
 
     this._setEventListeners();
 

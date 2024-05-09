@@ -91,9 +91,9 @@ const maxImageTitle = document.querySelector("#max-image-title");
 //***************************************************************************************************************************//
 
 const handleImageClick = (card) => {
-  maxImage.src = card._cardImage.src;
-  maxImage.alt = card._cardImage.alt;
-  maxImageTitle.textContent = card._cardImage.alt;
+  maxImage.src = card.cardImage.src;
+  maxImage.alt = card.cardImage.alt;
+  maxImageTitle.textContent = card.cardImage.alt;
   openModal(maxImageModal);
 };
 
@@ -189,7 +189,7 @@ initialCards.forEach((cardData) => {
 
 function createCard(cardData, method = "append") {
   const cardTemplate = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = cardTemplate.getCardElement(cardData);
+  const cardElement = cardTemplate.getCardElement();
 
   cardsList[method](cardElement);
 }
