@@ -51,10 +51,7 @@
     </div>
     <div class="modal" id="edit-profile-modal">
       <div class="modal__container">
-        <button
-          class="modal__close-button"
-          id="modal-close-button"
-        ></button>
+        <button class="modal__close-button" id="modal-close-button"></button>
         <p class="modal__heading">Edit profile</p>
         <form class="modal__form" id="edit-profile-modal-form" novalidate>
           <input
@@ -67,7 +64,10 @@
             minlength="2"
             maxlength="40"
           />
-          <span class="modal__error-message" id="edit-profile-name-placeholder-error"></span>
+          <span
+            class="modal__error-message"
+            id="edit-profile-name-placeholder-error"
+          ></span>
           <input
             type="text"
             name="description"
@@ -78,7 +78,10 @@
             minlength="2"
             maxlength="200"
           />
-          <span class="modal__error-message" id="edit-profile-subtitle-placeholder-error"></span>
+          <span
+            class="modal__error-message"
+            id="edit-profile-subtitle-placeholder-error"
+          ></span>
           <button
             type="submit"
             class="modal__submit-button"
@@ -91,10 +94,7 @@
     </div>
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
-        <button
-          class="modal__close-button"
-          id="modal-close-button"
-        ></button>
+        <button class="modal__close-button" id="modal-close-button"></button>
         <p class="modal__heading">New place</p>
         <form class="modal__form" id="add-card-modal-form">
           <input
@@ -115,9 +115,11 @@
             class="modal__form-input"
             id="add-card-image-link"
             required
-            
           />
-          <span class="modal__error-message" id="add-card-image-link-error"></span>
+          <span
+            class="modal__error-message"
+            id="add-card-image-link-error"
+          ></span>
           <button
             type="submit"
             class="modal__submit-button"
@@ -135,26 +137,25 @@
           id="modal-close-button"
           type="button"
         ></button>
-        <img
-          class="modal__image"
-          id="max-image"
-          src=""
-          alt=""
-        />
+        <img class="modal__image" id="max-image" src="" alt="" />
         <h3 class="modal__title" id="max-image-title"></h3>
       </div>
     </div>
     <template class="card-template" id="card-template">
       <li class="card">
         <button class="card__trash" id="card-delete" type="button"></button>
-        <img class="card__image" id="max-image-modal-open-button" src="" alt="" />
+        <img
+          class="card__image"
+          id="max-image-modal-open-button"
+          src=""
+          alt=""
+        />
         <div class="card__info">
           <h2 class="card__title"></h2>
           <button class="card__like" id="card-like" type="button"></button>
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js"></script>
+    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
