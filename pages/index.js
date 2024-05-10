@@ -185,6 +185,7 @@ initialCards.forEach((cardData) => {
 [...document.querySelectorAll(formSelector)].forEach((formElement) => {
   const form = new FormValidator(config, formElement);
   form.enableValidation();
+  form.toggleButtonState();
 });
 
 function createCard(cardData, method = "append") {
