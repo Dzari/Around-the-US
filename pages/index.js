@@ -134,6 +134,10 @@ function handleAddCardSubmit(e) {
   createCard(cardData, "prepend");
   closeModal(addCardModal);
   e.target.reset();
+  e.target.querySelector(".modal__submit-button").setAttribute("disabled", "");
+  e.target
+    .querySelector(".modal__submit-button")
+    .classList.add("modal__submit-button_disabled");
 }
 
 //***************************************************************************************************************************//
