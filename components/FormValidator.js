@@ -37,6 +37,9 @@ export default class FormValidator {
         this.toggleButtonState();
       });
     });
+    this._form.addEventListener("submit", () => {
+      this.toggleButtonState();
+    });
   }
   toggleButtonState() {
     const { inactiveButtonClass } = this._config;
