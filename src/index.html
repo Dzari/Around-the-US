@@ -8,14 +8,13 @@
     <meta name="author" content="Darien Sessions" />
     <meta name="keywords" content="adventure, photos, profile" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
         <img
           class="header__photo"
-          src="./images/Header-logo.svg"
+          src="<%=require('./images/Header-logo.svg')%>"
           alt="Around the U.S. Logo"
         />
       </header>
@@ -23,7 +22,7 @@
         <section class="profile">
           <img
             class="profile__image"
-            src="./images/avatar.png"
+            src="<%=require('./images/avatar.png')%>"
             alt="Profile Image"
           />
           <div class="profile__info">
@@ -156,6 +155,5 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
