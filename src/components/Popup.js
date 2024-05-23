@@ -6,20 +6,18 @@ export default class Popup {
 
   open() {
     this._popupElement.classList.add("modal_is-opened");
-    document.addEventListener("keydown", (evt) => {
-      this._handleEscClose(evt);
-    });
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
   close() {
+    console.log("closed");
     this._popupElement.classList.remove("modal_is-opened");
-    document.removeEventListener("keydown", (evt) => {
-      this._handleEscClose(evt);
-    });
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
+      console.log("key pressed");
       this.close();
     }
   }
