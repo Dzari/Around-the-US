@@ -16,26 +16,16 @@ const editProfileMOB = document.querySelector(
 );
 const addCardMOB = document.querySelector("#add-card-modal-open-button");
 
-//Edit Profile Elements
+//User Info on Load
 
-const profileName = document.querySelector("#profile-name");
-const profileSubtitle = document.querySelector("#profile-subtitle");
+const initialUserInfo = {
+  name: document.querySelector("#profile-name"),
+  job: document.querySelector("#profile-subtitle"),
+};
 
 //***************************************************************************************************************************//
 //                                                 Functions                                                                 //
 //***************************************************************************************************************************//
-
-const handleImageClick = (cardData) => {
-  maxImagePopup.open(cardData);
-};
-
-editProfileMOB.addEventListener("click", () => {
-  editProfilePopup.open();
-});
-
-addCardMOB.addEventListener("click", () => {
-  addPlacePopup.open();
-});
 
 const createCard = (cardData, method = "append") => {
   const cardTemplate = new Card(cardData, "#card-template", handleImageClick);
@@ -45,26 +35,40 @@ const createCard = (cardData, method = "append") => {
 };
 
 //***************************************************************************************************************************//
+//                                             Event Listeners                                                               //
+//***************************************************************************************************************************//
+
+editProfileMOB.addEventListener("click", () => {
+  editProfilePopup.open();
+});
+
+addCardMOB.addEventListener("click", () => {
+  addPlacePopup.open();
+});
+
+//***************************************************************************************************************************//
 //                                             Event Handlers                                                                //
 //***************************************************************************************************************************//
 
-function handleEditProfile([name, subtitle]) {
-  userInfo.setUserInfo(userInfo.getUserInfo());
+function handleEditProfile(userData) {
+  console.log(userData);
+  userInfo.setUserInfo(userData);
   editProfilePopup._popupForm.reset();
   editProfilePopup.close();
 }
 
-function handleAddCardSubmit([title, titleLink]) {
-  const cardData = {
-    name: title.value,
-    link: titleLink.value,
-  };
+function handleAddCardSubmit(cardData) {
   createCard(cardData, "prepend");
+  addPlacePopup._popupForm.reset();
   addPlacePopup.close();
 }
 
+const handleImageClick = (cardData) => {
+  maxImagePopup.open(cardData);
+};
+
 //***************************************************************************************************************************//
-//                                                     ELEMENTS                                                              //
+//                                                     Objects                                                               //
 //***************************************************************************************************************************//
 
 const cardSection = new Section(initialCards, createCard, "#cards-list");
@@ -74,10 +78,10 @@ const editProfilePopup = new PopupWithForm(
   handleEditProfile
 );
 const addPlacePopup = new PopupWithForm("#add-card-modal", handleAddCardSubmit);
-const userInfo = new UserInfo(profileName, profileSubtitle);
+const userInfo = new UserInfo(initialUserInfo);
 
 //***************************************************************************************************************************//
-//                                             Initial Functions                                                             //
+//                                             Validation and Rendering                                                      //
 //***************************************************************************************************************************//
 
 [...document.querySelectorAll(formSelector)].forEach((formElement) => {
