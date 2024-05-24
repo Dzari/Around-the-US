@@ -51,15 +51,16 @@ addCardMOB.addEventListener("click", () => {
 //***************************************************************************************************************************//
 
 function handleEditProfile(userData) {
-  console.log(userData);
   userInfo.setUserInfo(userData);
-  editProfilePopup._popupForm.reset();
+  editProfilePopup.popupForm.reset();
+  editProfileFormValidator.toggleButtonState();
   editProfilePopup.close();
 }
 
 function handleAddCardSubmit(cardData) {
   createCard(cardData, "prepend");
-  addPlacePopup._popupForm.reset();
+  addPlacePopup.popupForm.reset();
+  addPlaceFormValidator.toggleButtonState();
   addPlacePopup.close();
 }
 
@@ -84,13 +85,21 @@ const userInfo = new UserInfo(initialUserInfo);
 //                                             Validation and Rendering                                                      //
 //***************************************************************************************************************************//
 
-[...document.querySelectorAll(formSelector)].forEach((formElement) => {
-  const form = new FormValidator(config, formElement);
-  form.enableValidation();
-  form.toggleButtonState();
-});
+const editProfileFormValidator = new FormValidator(
+  config,
+  document.querySelector(`#edit-profile${formSelector}`)
+);
+
+const addPlaceFormValidator = new FormValidator(
+  config,
+  document.querySelector(`#add-card${formSelector}`)
+);
 
 cardSection.renderItems();
 maxImagePopup.setEventListeners();
 editProfilePopup.setEventListeners();
 addPlacePopup.setEventListeners();
+editProfileFormValidator.enableValidation();
+editProfileFormValidator.toggleButtonState();
+addPlaceFormValidator.enableValidation();
+addPlaceFormValidator.toggleButtonState();
