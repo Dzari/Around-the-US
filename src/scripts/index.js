@@ -39,6 +39,8 @@ const createCard = (cardData, method = "append") => {
 //***************************************************************************************************************************//
 
 editProfileMOB.addEventListener("click", () => {
+  userInfo.setUserInfo(userInfo.getUserInfo());
+  editProfileFormValidator.toggleButtonState();
   editProfilePopup.open();
 });
 
