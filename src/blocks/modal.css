@@ -41,7 +41,7 @@
   margin: auto;
   color: #000;
   width: 430px;
-  height: 330px;
+  max-height: 330px;
   box-sizing: border-box;
 }
 

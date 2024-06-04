@@ -42,6 +42,11 @@
   overflow: hidden;
 }
 
+.card__like-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .card__like {
   background: transparent url(../images/like-button.svg) center no-repeat;
   border: none;
@@ -50,6 +55,13 @@
   width: 21px;
   height: 18px;
   transition: opacity 0.25s, cursor 0.25s;
+}
+
+.card__like-counter {
+  font-size: 13px;
+  line-height: 16px;
+  align-self: center;
+  margin: 0;
 }
 
 .card__like_liked {
