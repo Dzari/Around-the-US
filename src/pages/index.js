@@ -64,7 +64,6 @@ const addNewCard = (cardData, method = "append") => {
   const cardElement = cardTemplate.getCardElement();
   cardTemplate.renderLikes();
 
-
   cardSection.addItem(cardElement, method);
 };
 
@@ -123,6 +122,7 @@ function handleAddCardSubmit(cardData) {
   addPlaceFormValidator.toggleButtonState();
   addPlacePopup.close();
   submitButton.textContent = "Create";
+  api.getInitialCards();
 }
 
 let cardtoDeleteData;
@@ -133,7 +133,7 @@ function handleConfirmDelete(data) {
 }
 
 function handleDeleteCard() {
-  //api.deleteCard(cardtoDeleteData._id);
+  api.deleteCard(cardtoDeleteData._id);
   const image = document.querySelector(`img[src='${cardtoDeleteData.link}'`);
   console.log(image);
   console.log(image.closest(".card"));

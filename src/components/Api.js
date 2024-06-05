@@ -79,6 +79,7 @@ export default class Api {
 
   async likeCard(cardId, method) {
     try {
+      console.log(cardId);
       const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: method,
         headers: this._headers,
