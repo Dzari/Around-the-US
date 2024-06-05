@@ -64,8 +64,14 @@ const addNewCard = (cardData, method = "append") => {
   const cardElement = cardTemplate.getCardElement();
   cardTemplate.renderLikes();
 
+
   cardSection.addItem(cardElement, method);
 };
+
+async function setProfilePic() {
+  const data = await api.getUserInfo();
+  profilePic.src = data.avatar;
+}
 
 //***************************************************************************************************************************//
 //                                             Event Listeners                                                               //
@@ -124,12 +130,13 @@ let cardtoDeleteData;
 function handleConfirmDelete(data) {
   confirmDeletePopup.open();
   cardtoDeleteData = data;
-  console.log(cardtoDeleteData);
 }
 
 function handleDeleteCard() {
-  api.deleteCard(cardtoDeleteData._id);
+  //api.deleteCard(cardtoDeleteData._id);
   const image = document.querySelector(`img[src='${cardtoDeleteData.link}'`);
+  console.log(image);
+  console.log(image.closest(".card"));
   const deleteCard = image.closest(".card");
   deleteCard.remove();
   confirmDeletePopup.close();
@@ -153,7 +160,9 @@ const handleImageClick = (cardData) => {
 function handleLikeCard(cardId, method) {
   if (method === "PUT") {
     api.likeCard(cardId, method);
-  } else api.removeLike(cardId, method);
+  } else {
+    api.removeLike(cardId, method);
+  }
 }
 
 //***************************************************************************************************************************//
@@ -212,3 +221,4 @@ addPlaceFormValidator.enableValidation();
 addPlaceFormValidator.toggleButtonState();
 profilePicFormValidator.enableValidation();
 profilePicFormValidator.toggleButtonState();
+setProfilePic();
