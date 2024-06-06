@@ -102,7 +102,6 @@ function handleEditProfile(userData) {
     "#edit-profile-modal-submit-button"
   );
   submitButton.textContent = "Saving...";
-  console.log(userData);
   api.patchProfileInfo(userData.name, userData.job);
   userInfo.setUserInfo(userData);
   editProfilePopup.popupForm.reset();
@@ -116,13 +115,19 @@ function handleAddCardSubmit(cardData) {
     "#add-card-modal-submit-button"
   );
   submitButton.textContent = "Saving...";
-  api.addNewCard(cardData);
-  addNewCard(cardData, "prepend");
-  addPlacePopup.popupForm.reset();
-  addPlaceFormValidator.toggleButtonState();
-  addPlacePopup.close();
-  submitButton.textContent = "Create";
-  api.getInitialCards();
+
+  api
+    .addNewCard(cardData)
+    .then((data) => {
+      addNewCard(data, "prepend");
+      addPlacePopup.popupForm.reset();
+      addPlaceFormValidator.toggleButtonState();
+      addPlacePopup.close();
+      submitButton.textContent = "Create";
+    })
+    .catch((error) => {
+      console.error("Error adding card:", error);
+    });
 }
 
 let cardtoDeleteData;
@@ -135,8 +140,6 @@ function handleConfirmDelete(data) {
 function handleDeleteCard() {
   api.deleteCard(cardtoDeleteData._id);
   const image = document.querySelector(`img[src='${cardtoDeleteData.link}'`);
-  console.log(image);
-  console.log(image.closest(".card"));
   const deleteCard = image.closest(".card");
   deleteCard.remove();
   confirmDeletePopup.close();

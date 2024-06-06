@@ -59,7 +59,7 @@ export default class Api {
           link: link,
         }),
       });
-      this.validateAndParse(res);
+      return await this.validateAndParse(res);
     } catch (err) {
       console.log(err);
     }
@@ -79,7 +79,6 @@ export default class Api {
 
   async likeCard(cardId, method) {
     try {
-      console.log(cardId);
       const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: method,
         headers: this._headers,
