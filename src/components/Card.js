@@ -28,7 +28,7 @@ export default class Card {
       this._handleConfirmDelete(this._data);
     });
 
-    this.cardImage.addEventListener("click", () => {
+    this._cardImage.addEventListener("click", () => {
       this._handleImageClick(this._data);
     });
   }
@@ -38,14 +38,15 @@ export default class Card {
       .querySelector(this._cardSelector)
       .content.cloneNode(true);
     this._likeCounter = this._cardElement.querySelector("#card-like-counter");
-    this.cardImage = this._cardElement.querySelector(".card__image");
-    const cardTitle = this._cardElement.querySelector(".card__title");
+    this._cardImage = this._cardElement.querySelector(".card__image");
+    this._cardTitle = this._cardElement.querySelector(".card__title");
+    this._card = this._cardElement.querySelector(".card");
 
     //Assigning data to new clone
-    cardTitle.textContent = this._data.name;
-    cardTitle.id = this._data._id;
-    this.cardImage.alt = this._data.name;
-    this.cardImage.src = this._data.link;
+    this._cardTitle.textContent = this._data.name;
+    this._card.id = this._data._id;
+    this._cardImage.alt = this._data.name;
+    this._cardImage.src = this._data.link;
 
     this._setEventListeners();
 
@@ -53,13 +54,9 @@ export default class Card {
   }
 
   _handleCardLike() {
-    this._likeButton.classList.toggle("card__like_liked");
-
     if (this._likeCounter.textContent === "1") {
-      this._likeCounter.textContent = "0";
       this._handleLike(this._data._id, "DELETE");
     } else {
-      this._likeCounter.textContent = "1";
       this._handleLike(this._data._id, "PUT");
     }
   }

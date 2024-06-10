@@ -284,11 +284,18 @@ async function handleEditPicSubmit({ link }) {
 
 //Handles card Like
 async function handleLikeCard(cardId, method) {
+  const card = document.querySelector(`li[id='${cardId}'`);
+  const cardLike = card.querySelector("#card-like");
+  const cardLikeCounter = card.querySelector("#card-like-counter");
   try {
     if (method === "PUT") {
       api.likeCard(cardId, method);
+      cardLikeCounter.textContent = "1";
+      cardLike.classList.add("card__like_liked");
     } else {
       api.removeLike(cardId, method);
+      cardLikeCounter.textContent = "0";
+      cardLike.classList.remove("card__like_liked");
     }
   } catch (err) {
     console.log(err);
