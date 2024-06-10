@@ -43,6 +43,7 @@ export default class Card {
 
     //Assigning data to new clone
     cardTitle.textContent = this._data.name;
+    cardTitle.id = this._data._id;
     this.cardImage.alt = this._data.name;
     this.cardImage.src = this._data.link;
 
