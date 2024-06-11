@@ -254,9 +254,8 @@ function handleConfirmDelete(data) {
 async function handleDeleteCard() {
   try {
     api.deleteCard(cardtoDeleteData._id);
-    const cardId = document.querySelector(`h2[id='${cardtoDeleteData._id}'`);
-    const deleteCard = cardId.closest(".card");
-    deleteCard.remove();
+    const card = document.querySelector(`li[id='${cardtoDeleteData._id}'`);
+    card.remove();
   } catch (err) {
     console.log(err);
   } finally {
