@@ -15,14 +15,14 @@ export default class Api {
     const res = await fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     });
-    return this.validateAndParse(res);
+    return await this.validateAndParse(res);
   }
 
   async getUserInfo() {
     const res = await fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     });
-    return this.validateAndParse(res);
+    return await this.validateAndParse(res);
   }
 
   async patchProfileInfo(name, about) {
@@ -34,7 +34,7 @@ export default class Api {
         about: about,
       }),
     });
-    this.validateAndParse(res);
+    return await this.validateAndParse(res);
   }
 
   async addNewCard({ name, link }) {
@@ -54,7 +54,7 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     });
-    this.validateAndParse(res);
+    return await this.validateAndParse(res);
   }
 
   async likeCard(cardId, method) {
@@ -62,7 +62,7 @@ export default class Api {
       method: method,
       headers: this._headers,
     });
-    this.validateAndParse(res);
+    return await this.validateAndParse(res);
   }
 
   async removeLike(cardId, method) {
@@ -70,7 +70,7 @@ export default class Api {
       method: method,
       headers: this._headers,
     });
-    this.validateAndParse(res);
+    return await this.validateAndParse(res);
   }
 
   async changeProfilePicture(link) {
@@ -81,6 +81,6 @@ export default class Api {
         avatar: link,
       }),
     });
-    this.validateAndParse(res);
+    return await this.validateAndParse(res);
   }
 }

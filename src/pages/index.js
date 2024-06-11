@@ -202,18 +202,19 @@ const handleImageClick = (cardData) => {
 //***************************************************************************************************************************//
 
 //Handles profile picture submit
-async function handleEditProfile(userData) {
+function handleEditProfile(userData) {
   const submitButton = editProfileModal.querySelector(
     "#edit-profile-modal-submit-button"
   );
   submitButton.textContent = "Saving...";
 
   try {
-    api.patchProfileInfo(userData.name, userData.job);
-    userInfo.setUserInfo(userData);
-    editProfilePopup.popupForm.reset();
-    editProfileFormValidator.toggleButtonState();
-    editProfilePopup.close();
+    api.patchProfileInfo(userData.name, userData.job).then((res) => {
+      userInfo.setUserInfo(res);
+      editProfilePopup.popupForm.reset();
+      editProfileFormValidator.toggleButtonState();
+      editProfilePopup.close();
+    });
   } catch (err) {
     console.log(err);
   } finally {
