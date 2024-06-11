@@ -12,107 +12,75 @@ export default class Api {
   }
 
   async getInitialCards() {
-    try {
-      const res = await fetch(`${this._baseUrl}/cards`, {
-        headers: this._headers,
-      });
-      return this.validateAndParse(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    });
+    return this.validateAndParse(res);
   }
 
   async getUserInfo() {
-    try {
-      const res = await fetch(`${this._baseUrl}/users/me`, {
-        headers: this._headers,
-      });
-      return this.validateAndParse(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    });
+    return this.validateAndParse(res);
   }
 
   async patchProfileInfo(name, about) {
-    try {
-      const res = await fetch(`${this._baseUrl}/users/me`, {
-        method: "PATCH",
-        headers: this._headers,
-        body: JSON.stringify({
-          name: name,
-          about: about,
-        }),
-      });
-      this.validateAndParse(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        about: about,
+      }),
+    });
+    this.validateAndParse(res);
   }
 
   async addNewCard({ name, link }) {
-    try {
-      const res = await fetch(`${this._baseUrl}/cards`, {
-        method: "POST",
-        headers: this._headers,
-        body: JSON.stringify({
-          name: name,
-          link: link,
-        }),
-      });
-      return await this.validateAndParse(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      }),
+    });
+    return await this.validateAndParse(res);
   }
 
   async deleteCard(cardId) {
-    try {
-      const res = await fetch(`${this._baseUrl}/cards/${cardId}`, {
-        method: "DELETE",
-        headers: this._headers,
-      });
-      this.validateAndParse(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    });
+    this.validateAndParse(res);
   }
 
   async likeCard(cardId, method) {
-    try {
-      const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: method,
-        headers: this._headers,
-      });
-      this.validateAndParse(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: method,
+      headers: this._headers,
+    });
+    this.validateAndParse(res);
   }
 
   async removeLike(cardId, method) {
-    try {
-      const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: method,
-        headers: this._headers,
-      });
-      this.validateAndParse(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: method,
+      headers: this._headers,
+    });
+    this.validateAndParse(res);
   }
 
   async changeProfilePicture(link) {
-    try {
-      const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
-        method: "PATCH",
-        headers: this._headers,
-        body: JSON.stringify({
-          avatar: link,
-        }),
-      });
-      this.validateAndParse(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: link,
+      }),
+    });
+    this.validateAndParse(res);
   }
 }
