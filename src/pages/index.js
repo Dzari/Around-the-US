@@ -201,45 +201,50 @@ const handleImageClick = (cardData) => {
 //                                             Event Handlers                                                                //
 //***************************************************************************************************************************//
 
-//Handles profile picture submit
+//Handles profile edit submit
 function handleEditProfile(userData) {
   const submitButton = editProfileModal.querySelector(
     "#edit-profile-modal-submit-button"
   );
   submitButton.textContent = "Saving...";
 
-  try {
-    api.patchProfileInfo(userData.name, userData.job).then((res) => {
+  api
+    .patchProfileInfo(userData.name, userData.job)
+    .then((res) => {
       userInfo.setUserInfo(res);
       editProfilePopup.popupForm.reset();
       editProfileFormValidator.toggleButtonState();
       editProfilePopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      submitButton.textContent = "Save";
     });
-  } catch (err) {
-    console.log(err);
-  } finally {
-    submitButton.textContent = "Save";
-  }
 }
 
 //Handles new card submit
-async function handleAddCardSubmit(cardData) {
+function handleAddCardSubmit(cardData) {
   const submitButton = addCardModal.querySelector(
     "#add-card-modal-submit-button"
   );
   submitButton.textContent = "Saving...";
 
-  try {
-    const data = await api.addNewCard(cardData);
-    addNewCard(data, "prepend");
-    addPlacePopup.popupForm.reset();
-    addPlaceFormValidator.toggleButtonState();
-    addPlacePopup.close();
-  } catch (err) {
-    console.log(err);
-  } finally {
-    submitButton.textContent = "Create";
-  }
+  api
+    .addNewCard(cardData)
+    .then((res) => {
+      addNewCard(res, "prepend");
+      addPlacePopup.popupForm.reset();
+      addPlaceFormValidator.toggleButtonState();
+      addPlacePopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      submitButton.textContent = "Create";
+    });
 }
 
 //Handles card deletion
