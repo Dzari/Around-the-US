@@ -39,8 +39,9 @@ const confirmDeletePopup = new PopupWithForm(
 
 //User Info Class
 const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  jobSelector: ".profile__subtitle",
+  nameSelector: "#profile-name",
+  jobSelector: "#profile-subtitle",
+  avatarSelector: "#profile-photo",
 });
 
 //Form Validator Class
@@ -120,16 +121,6 @@ function addNewCard(cardData, method = "append") {
   cardSection.addItem(cardElement, method);
 }
 
-//Sets Profile Picture
-async function setProfilePic() {
-  try {
-    const data = await api.getUserInfo();
-    profilePic.src = data.avatar;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 //Sets event Listeners
 function setEventListeners(popups) {
   popups.forEach((popup) => {
@@ -146,26 +137,30 @@ function setFormValidation(formValidators) {
 }
 
 //Fetches then sets User Info
-async function setUserInfo() {
-  try {
-    const userInfo = await api.getUserInfo();
-    profileName.textContent = userInfo.name;
-    profileAbout.textContent = userInfo.about;
-    setProfilePic();
-  } catch (err) {
-    console.log(err);
-  }
+function setUserInfo() {
+  api
+    .getUserInfo()
+    .then((userInfo) => {
+      profileName.textContent = userInfo.name;
+      profileAbout.textContent = userInfo.about;
+      profilePic.src = userInfo.avatar;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 //Fetches then sets Initial Cards
-async function setInitialCards() {
-  try {
-    const cards = await api.getInitialCards();
-    cardSection = new Section(cards, addNewCard, "#cards-list");
-    cardSection.renderItems();
-  } catch (err) {
-    console.log(err);
-  }
+function setInitialCards() {
+  api
+    .getInitialCards()
+    .then((cards) => {
+      cardSection = new Section(cards, addNewCard, "#cards-list");
+      cardSection.renderItems();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 //***************************************************************************************************************************//
@@ -257,53 +252,62 @@ function handleConfirmDelete(data) {
 }
 
 //Deletes card
-async function handleDeleteCard() {
-  try {
-    api.deleteCard(cardtoDeleteData._id);
-    const card = document.querySelector(`li[id='${cardtoDeleteData._id}'`);
-    card.remove();
-  } catch (err) {
-    console.log(err);
-  } finally {
-    confirmDeletePopup.close();
-  }
+function handleDeleteCard() {
+  api
+    .deleteCard(cardtoDeleteData._id)
+    .then(() => {
+      const card = document.querySelector(`li[id='${cardtoDeleteData._id}'`);
+      card.remove();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      confirmDeletePopup.close();
+    });
 }
 
 //Changes Profile Picture
-async function handleEditPicSubmit({ link }) {
+function handleEditPicSubmit({ link }) {
   const submitButton = editProfilePicModal.querySelector(
     "#edit-pic-modal-submit-button"
   );
   submitButton.textContent = "Saving...";
 
-  try {
-    api.changeProfilePicture(link);
-  } catch (err) {
-    console.log(err);
-  } finally {
-    profilePic.src = link;
-    profilePicPopup.close();
-    submitButton.textContent = "Save";
-  }
+  api
+    .changeProfilePicture(link)
+    .then(() => {
+      profilePic.src = link;
+      profilePicPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      submitButton.textContent = "Save";
+    });
 }
 
 //Handles card Like
-async function handleLikeCard(cardId, method) {
-  const card = document.querySelector(`li[id='${cardId}'`);
-  const cardLike = card.querySelector("#card-like");
-  const cardLikeCounter = card.querySelector("#card-like-counter");
-  try {
-    if (method === "PUT") {
-      api.likeCard(cardId, method);
-      cardLikeCounter.textContent = "1";
-      cardLike.classList.add("card__like_liked");
-    } else {
-      api.removeLike(cardId, method);
-      cardLikeCounter.textContent = "0";
-      cardLike.classList.remove("card__like_liked");
-    }
-  } catch (err) {
-    console.log(err);
+function handleLikeCard(card, method) {
+  if (method === "PUT") {
+    api
+      .likeCard(card._data._id)
+      .then(() => {
+        card.renderLikes(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    api
+      .removeLike(card._data._id)
+      .then(() => {
+        card.renderLikes(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 

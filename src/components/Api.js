@@ -57,17 +57,17 @@ export default class Api {
     return await this.validateAndParse(res);
   }
 
-  async likeCard(cardId, method) {
+  async likeCard(cardId) {
     const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: method,
+      method: "PUT",
       headers: this._headers,
     });
     return await this.validateAndParse(res);
   }
 
-  async removeLike(cardId, method) {
+  async removeLike(cardId) {
     const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: method,
+      method: "DELETE",
       headers: this._headers,
     });
     return await this.validateAndParse(res);

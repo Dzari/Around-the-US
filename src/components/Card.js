@@ -55,13 +55,14 @@ export default class Card {
 
   _handleCardLike() {
     if (this._likeCounter.textContent === "1") {
-      this._handleLike(this._data._id, "DELETE");
+      this._handleLike(this, "DELETE");
     } else {
-      this._handleLike(this._data._id, "PUT");
+      this._handleLike(this, "PUT");
     }
   }
 
-  renderLikes() {
+  renderLikes(likedValue = this._isLiked) {
+    this._isLiked = likedValue;
     if (!this._isLiked) {
       this._likeCounter.textContent = "0";
       this._likeButton.classList.remove("card__like_liked");
