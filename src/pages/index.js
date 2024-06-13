@@ -74,10 +74,6 @@ const userJobInput = document.querySelector(
   "#edit-profile-subtitle-placeholder"
 );
 
-//User Info
-const profileName = document.querySelector("#profile-name");
-const profileAbout = document.querySelector("#profile-subtitle");
-
 //Modals
 const editProfilePicModal = document.querySelector("#edit-pic-modal");
 const addCardModal = document.querySelector("#add-card-modal");
@@ -140,10 +136,8 @@ function setFormValidation(formValidators) {
 function setUserInfo() {
   api
     .getUserInfo()
-    .then((userInfo) => {
-      profileName.textContent = userInfo.name;
-      profileAbout.textContent = userInfo.about;
-      profilePic.src = userInfo.avatar;
+    .then((user) => {
+      userInfo.setUserInfo(user);
     })
     .catch((err) => {
       console.log(err);
@@ -171,7 +165,7 @@ function setInitialCards() {
 editProfileMOB.addEventListener("click", () => {
   const user = userInfo.getUserInfo();
   userNameInput.value = user.name;
-  userJobInput.value = user.job;
+  userJobInput.value = user.about;
 
   editProfileFormValidator.toggleButtonState();
   editProfilePopup.open();
@@ -276,8 +270,8 @@ function handleEditPicSubmit({ link }) {
 
   api
     .changeProfilePicture(link)
-    .then(() => {
-      profilePic.src = link;
+    .then((res) => {
+      userInfo.setUserInfo(res);
       profilePicPopup.close();
     })
     .catch((err) => {
@@ -292,7 +286,7 @@ function handleEditPicSubmit({ link }) {
 function handleLikeCard(card, method) {
   if (method === "PUT") {
     api
-      .likeCard(card._data._id)
+      .likeCard(card.data._id)
       .then(() => {
         card.renderLikes(true);
       })
@@ -301,7 +295,7 @@ function handleLikeCard(card, method) {
       });
   } else {
     api
-      .removeLike(card._data._id)
+      .removeLike(card.data._id)
       .then(() => {
         card.renderLikes(false);
       })

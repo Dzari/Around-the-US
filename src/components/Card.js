@@ -6,7 +6,7 @@ export default class Card {
     handleConfirmDelete,
     handleLike
   ) {
-    this._data = data;
+    this.data = data;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleConfirmDelete = handleConfirmDelete;
@@ -25,11 +25,11 @@ export default class Card {
     });
 
     this._deletebutton.addEventListener("click", () => {
-      this._handleConfirmDelete(this._data);
+      this._handleConfirmDelete(this.data);
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._handleImageClick(this._data);
+      this._handleImageClick(this.data);
     });
   }
 
@@ -43,10 +43,10 @@ export default class Card {
     this._card = this._cardElement.querySelector(".card");
 
     //Assigning data to new clone
-    this._cardTitle.textContent = this._data.name;
-    this._card.id = this._data._id;
-    this._cardImage.alt = this._data.name;
-    this._cardImage.src = this._data.link;
+    this._cardTitle.textContent = this.data.name;
+    this._card.id = this.data._id;
+    this._cardImage.alt = this.data.name;
+    this._cardImage.src = this.data.link;
 
     this._setEventListeners();
 
