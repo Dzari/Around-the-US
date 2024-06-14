@@ -4,6 +4,42 @@
   padding: 40px 0 51px;
 }
 
+.profile__image-container {
+  position: relative;
+}
+
+.profile__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-right: 30px;
+  background-position: center;
+  object-fit: cover;
+  transition: 0.3s ease-in-out;
+}
+
+.profile__image:hover + .profile__image-button {
+  opacity: 1;
+}
+
+.profile__image:hover {
+  opacity: 0.8;
+}
+
+.profile__image-button {
+  background: transparent url(../images/edit-photo.svg) center no-repeat;
+  border: none;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 50px;
+  left: 48px;
+  cursor: pointer;
+  opacity: 0;
+  background-size: cover;
+  transition: 0.3s ease-in-out;
+}
+
 .profile__info {
   display: grid;
   grid-template-areas:
