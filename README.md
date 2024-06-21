@@ -1,6 +1,6 @@
 # Project 3: Around The U.S.
 
-- https://www.dzari.github.io/Around-the-US/
+- https://dzari.github.io/Around-the-US/
 
 ### Video explanation of the project
 
